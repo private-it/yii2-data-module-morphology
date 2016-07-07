@@ -63,10 +63,12 @@ class StringHelper extends Component
         $word = $this->ucfirst($word);
         $words = Dic::find()->andWhere([static::MORPHOLOGY_NOMINATIVE => $word])->asArray()->one();
         if ($words) {
-            return ArrayHelper::getValue($words, $type);
+            $result = ArrayHelper::getValue($words, $type);
+            if ($result) {
+                return $result;
+            }
         }
-        \Yii::getLogger()->log(__CLASS__ . ': Word "' . $word . '" not found in ' . Dic::tableName(), Logger::LEVEL_ERROR);
-        return false;
+        throw new StringHelperException(__CLASS__ . ': Word "' . $word . '" not found in ' . Dic::tableName() . ' for type "' . $type . '"', Logger::LEVEL_ERROR);
     }
 
     /**
@@ -128,4 +130,9 @@ class StringHelper extends Component
     {
         return '<strong>' . $str . '</strong>';
     }
+}
+
+class StringHelperException extends \Exception
+{
+
 }
