@@ -1,0 +1,19 @@
+{
+  "name": "private-it/yii2-data-module-morphology",
+  "description": "",
+  "license": "proprietary",
+  "type": "yii2-extension",
+  "autoload": {
+    "psr-4": {
+      "PrivateIT\\modules\\morphology\\": "src",
+      "PrivateIT\\modules\\morphology\\tests\\": "tests"
+    }
+  },
+  "require": {
+    "yiisoft/yii2": "^2.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-codeception": "^2.0",
+    "codeception/codeception": "2.1.8"
+  }
+}

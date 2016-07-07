@@ -1,0 +1,10 @@
+syntax: glob
+.idea
+syntax: regexp
+.*-local.php
+.*\.lock
+vendor/
+tests/_output/
+runtime/
+web/assets/
+_uploads/
