@@ -2,12 +2,19 @@
 namespace PrivateIT\modules\morphology\tests\unit;
 
 use PrivateIT\modules\morphology\components\StringHelper;
-use PrivateIT\modules\morphology\models\Dic;
 use PrivateIT\modules\morphology\MorphologyModule;
 use PrivateIT\modules\morphology\tests\DbTestCase;
+use PrivateIT\modules\morphology\tests\fixtures\application\DicFixture;
 
-class TransformTest extends DbTestCase
+class MainTest extends DbTestCase
 {
+    public function fixtures()
+    {
+        return [
+            DicFixture::className()
+        ];
+    }
+
     public function testMe()
     {
         $module = MorphologyModule::getInstance();
