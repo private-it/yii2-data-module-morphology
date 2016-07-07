@@ -1,0 +1,14 @@
+{
+  "morphology": {
+    "outPath": "src",
+    "source": {
+      "urlRefresh": "http://gii.it-private.ru/e-r-d2/refresh",
+      "urlGenerate": "http://gii.it-private.ru/e-r-d2/generate-module",
+      "params": {
+        "ns": "PrivateIT\\modules\\morphology",
+        "name": "Morphology",
+        "docId": "5847edc2-d97a-4e92-b520-e71196526930"
+      }
+    }
+  }
+}
