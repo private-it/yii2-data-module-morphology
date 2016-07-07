@@ -22,6 +22,42 @@ class StringHelper extends Component
     const MORPHOLOGY_PLURAL_INSTRUMENTAL = 'plural_instrumental';
     const MORPHOLOGY_PLURAL_PREPOSITIONAL = 'plural_prepositional';
 
+    /**
+     * Таблица транслитерации ГОСТ 7.79-2000
+     *
+     * @var array
+     */
+    public static $map = [
+        'а' => 'a', 'б' => 'b', 'в' => 'v',
+        'г' => 'g', 'д' => 'd', 'е' => 'e',
+        'ё' => 'e', 'ж' => 'zh', 'з' => 'z',
+        'и' => 'i', 'й' => 'j', 'к' => 'k',
+        'л' => 'l', 'м' => 'm', 'н' => 'n',
+        'о' => 'o', 'п' => 'p', 'р' => 'r',
+        'с' => 's', 'т' => 't', 'у' => 'u',
+        'ф' => 'f', 'х' => 'kh', 'ц' => 'c',
+        'ч' => 'ch', 'ш' => 'sh', 'щ' => 'shh',
+        'ь' => '', 'ы' => 'y', 'ъ' => '',
+        'э' => 'e', 'ю' => 'yu', 'я' => 'ya',
+        'А' => 'A', 'Б' => 'B', 'В' => 'V',
+        'Г' => 'G', 'Д' => 'D', 'Е' => 'E',
+        'Ё' => 'E', 'Ж' => 'ZH', 'З' => 'Z',
+        'И' => 'I', 'Й' => 'J', 'К' => 'K',
+        'Л' => 'L', 'М' => 'M', 'Н' => 'N',
+        'О' => 'O', 'П' => 'P', 'Р' => 'R',
+        'С' => 'S', 'Т' => 'T', 'У' => 'U',
+        'Ф' => 'F', 'Х' => 'KH', 'Ц' => 'C',
+        'Ч' => 'CH', 'Ш' => 'SH', 'Щ' => 'SHH',
+        'Ь' => '', 'Ы' => 'Y', 'Ъ' => '',
+        'Э' => 'E', 'Ю' => 'YU', 'Я' => 'YA',
+    ];
+
+    /**
+     * Кодировка исходного текста
+     * @var string
+     */
+    public static $charset = 'UTF-8';
+
     public function morphology($word, $type)
     {
         $word = $this->ucfirst($word);
@@ -33,22 +69,61 @@ class StringHelper extends Component
         return false;
     }
 
+    /**
+     * @param string $str
+     * @param string $that
+     * @return mixed|string
+     */
+    public function transliteration($str, $that = '-')
+    {
+        $text = html_entity_decode($str);
+        $text = strip_tags($text);
+        $text = mb_strtolower($text, static::$charset);
+        $text = strtr($text, static::$map);
+        $text = strtr($text, ['–' => '-']); // хитрое тире
+        $text = strtr($text, ['\'' => '']);
+        $text = strtr($text, ['«' => '']);
+        $text = strtr($text, ['»' => '']);
+        $text = strtr($text, ['&' => 'and']);
+        $text = preg_replace('/[^сca-z0-9а-яА-ЯёЁсС!]+/i', ' ', strip_tags($text));
+        $text = preg_replace("/([\x80\x93\xe2])|([\x96])/", "-", $text);
+        $text = strtr($text, '  ', ' ');
+        $text = strtr(trim($text), ' ', $that);
+        return $text;
+    }
+
+    /**
+     * @param string $str
+     * @return string
+     */
     public function ucfirst($str)
     {
-        return mb_strtoupper(mb_substr($str, 0, 1, 'UTF-8'), 'UTF-8') .
-        mb_substr($str, 1, mb_strlen($str, 'UTF-8'), 'UTF-8');
+        return mb_strtoupper(mb_substr($str, 0, 1, static::$charset), static::$charset) .
+        mb_substr($str, 1, mb_strlen($str, static::$charset), static::$charset);
     }
 
+    /**
+     * @param string $str
+     * @return string
+     */
     public function strtolower($str)
     {
-        return mb_strtolower($str, 'UTF-8');
+        return mb_strtolower($str, static::$charset);
     }
 
+    /**
+     * @param string $str
+     * @return string
+     */
     public function strtoupper($str)
     {
-        return mb_strtoupper($str, 'UTF-8');
+        return mb_strtoupper($str, static::$charset);
     }
 
+    /**
+     * @param string $str
+     * @return string
+     */
     public function htmlStrong($str)
     {
         return '<strong>' . $str . '</strong>';
