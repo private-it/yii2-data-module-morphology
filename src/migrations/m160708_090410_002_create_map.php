@@ -7,10 +7,10 @@ use yii\db\Schema;
 use yii\db\Migration;
 
 /**
- * m160708_081949_001_create_map
+ * m160708_090410_002_create_map
  *
  */
-class m160708_081949_001_create_map extends Migration
+class m160708_090410_002_create_map extends Migration
 {
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class m160708_081949_001_create_map extends Migration
         $this->createTable(\PrivateIT\modules\morphology\models\Map::tableName(), [
             'id' => $this->primaryKey(),
             'value' => $this->string()->defaultValue(""),
-            'relation' => $this->string()->defaultValue(""),
+            'type' => $this->string()->defaultValue(""),
             'result' => $this->string()->defaultValue(""),
         ], $tableOptions);
     }
