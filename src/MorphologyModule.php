@@ -4,12 +4,14 @@
  */
 namespace PrivateIT\modules\morphology;
 
+use PrivateIT\modules\morphology\components\StringHelperException;
 use yii\base\Module;
 use yii\helpers\ArrayHelper;
 use yii\helpers\StringHelper;
 use yii\helpers\Inflector;
 use yii\db\ActiveRecord;
 use Yii;
+use yii\helpers\VarDumper;
 
 /**
  * Class MorphologyModule
@@ -122,6 +124,9 @@ class MorphologyModule extends Module
                         $funcName = [$this->stringHelper, $funcName];
                     }
                     $value = call_user_func_array($funcName, $arguments);
+                }
+                if (!strlen($value)) {
+                    throw new StringHelperException('Result of expression "' . $replacement . '" is empty! String: "' . $str . '"');
                 }
 
                 $str = strtr($str, [$replacement => $value]);
