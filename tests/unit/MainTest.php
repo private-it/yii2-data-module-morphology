@@ -5,13 +5,15 @@ use PrivateIT\modules\morphology\components\StringHelper;
 use PrivateIT\modules\morphology\MorphologyModule;
 use PrivateIT\modules\morphology\tests\DbTestCase;
 use PrivateIT\modules\morphology\tests\fixtures\application\DicFixture;
+use PrivateIT\modules\morphology\tests\fixtures\application\MapFixture;
 
 class MainTest extends DbTestCase
 {
     public function fixtures()
     {
         return [
-            DicFixture::className()
+            DicFixture::className(),
+            MapFixture::className()
         ];
     }
 
@@ -19,7 +21,7 @@ class MainTest extends DbTestCase
     {
         $module = MorphologyModule::getInstance();
         $data = [
-            'speciality' => 'Аллерголог',
+            'speciality' => 'Аллергология',
             'cityGroup' => [
                 'name' => 'новосибирск'
             ]
@@ -29,7 +31,7 @@ class MainTest extends DbTestCase
             'Лучшие аллергологи Новосибирска',
             $module->transform(
                 'Лучшие ' .
-                '{speciality|morphology:' . StringHelper::MORPHOLOGY_PLURAL_NOMINATIVE . '|strtolower}' .
+                '{speciality|map:доктор|morphology:' . StringHelper::MORPHOLOGY_PLURAL_NOMINATIVE . '|strtolower}' .
                 ' ' .
                 '{cityGroup.name|morphology:' . StringHelper::MORPHOLOGY_GENITIVE . '|ucfirst}',
                 $data

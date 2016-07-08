@@ -3,7 +3,7 @@
 <document>
     <documentId>5847edc2-d97a-4e92-b520-e71196526930</documentId>
     <title>Morphology</title>
-    <version>201</version>
+    <version>391</version>
     <blocks>
         
         
@@ -21,108 +21,16 @@
     
     <textAreas>
         
-            <textArea>
-                <key>Key7</key>
-                <value>prepositional</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Field2</key>
-                <value>&#x418;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Type13</key>
-                <value>string</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Type10</key>
-                <value>string</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Key9</key>
-                <value>pluralGenitive</value>
-            </textArea>
-        
     
         
     
         
             <textArea>
-                <key>Field3</key>
-                <value>&#x420;&#x43e;&#x434;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+                <key>Field4</key>
+                <value>&#x414;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
             </textArea>
         
     
-        
-            <textArea>
-                <key>Name</key>
-                <value>Dic</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Key3</key>
-                <value>genitive</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Field11</key>
-                <value>&#x41c;.&#x427;. &#x412;&#x438;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Type1</key>
-                <value>pk</value>
-            </textArea>
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Key1</key>
-                <value>id</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Field5</key>
-                <value>&#x412;&#x438;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Key5</key>
-                <value>accusative</value>
-            </textArea>
         
     
         
@@ -131,22 +39,6 @@
             <textArea>
                 <key>Key6</key>
                 <value>instrumental</value>
-            </textArea>
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Field9</key>
-                <value>&#x41c;.&#x427;. &#x420;&#x43e;&#x434;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Key2</key>
-                <value>nominative</value>
             </textArea>
         
     
@@ -164,14 +56,164 @@
         
     
         
+    
+        
             <textArea>
-                <key>Type6</key>
+                <key>Type4</key>
                 <value>string</value>
             </textArea>
         
     
         
     
+        
+    
+        
+            <textArea>
+                <key>Key7</key>
+                <value>prepositional</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key13</key>
+                <value>pluralPrepositional</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type10</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type13</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key5</key>
+                <value>accusative</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Name</key>
+                <value>Dic</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field7</key>
+                <value>&#x41f;&#x440;&#x435;&#x434;&#x43b;&#x43e;&#x436;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field13</key>
+                <value>&#x41c;.&#x427;. &#x41f;&#x440;&#x435;&#x434;&#x43b;&#x43e;&#x436;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field6</key>
+                <value>&#x422;&#x432;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field12</key>
+                <value>&#x41c;.&#x427;. &#x422;&#x432;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key3</key>
+                <value>genitive</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key12</key>
+                <value>pluralInstrumental</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field8</key>
+                <value>&#x41c;.&#x427;. &#x418;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type2</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key1</key>
+                <value>id</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key2</key>
+                <value>nominative</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type5</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key9</key>
+                <value>pluralGenitive</value>
+            </textArea>
         
     
         
@@ -187,19 +229,6 @@
     
         
             <textArea>
-                <key>Field4</key>
-                <value>&#x414;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
                 <key>Key4</key>
                 <value>dative</value>
             </textArea>
@@ -207,16 +236,43 @@
     
         
             <textArea>
-                <key>Field8</key>
-                <value>&#x41c;.&#x427;. &#x418;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+                <key>Field5</key>
+                <value>&#x412;&#x438;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Type9</key>
-                <value>string</value>
+                <key>Field10</key>
+                <value>&#x41c;.&#x427;. &#x414;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
             </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type1</key>
+                <value>pk</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field9</key>
+                <value>&#x41c;.&#x427;. &#x420;&#x43e;&#x434;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field3</key>
+                <value>&#x420;&#x43e;&#x434;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
         
     
         
@@ -224,67 +280,6 @@
                 <key>Key10</key>
                 <value>pluralDative</value>
             </textArea>
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Field13</key>
-                <value>&#x41c;.&#x427;. &#x41f;&#x440;&#x435;&#x434;&#x43b;&#x43e;&#x436;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Type4</key>
-                <value>string</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Key8</key>
-                <value>pluralNominative</value>
-            </textArea>
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Type7</key>
-                <value>string</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Type5</key>
-                <value>string</value>
-            </textArea>
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Type11</key>
-                <value>string</value>
-            </textArea>
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Field7</key>
-                <value>&#x41f;&#x440;&#x435;&#x434;&#x43b;&#x43e;&#x436;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
         
     
         
@@ -299,12 +294,12 @@
         
     
         
-            <textArea>
-                <key>Key13</key>
-                <value>pluralPrepositional</value>
-            </textArea>
-        
     
+        
+            <textArea>
+                <key>Type12</key>
+                <value>string</value>
+            </textArea>
         
     
         
@@ -316,50 +311,53 @@
     
         
             <textArea>
-                <key>Field6</key>
-                <value>&#x422;&#x432;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+                <key>Field11</key>
+                <value>&#x41c;.&#x427;. &#x412;&#x438;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Type2</key>
+                <key>Key8</key>
+                <value>pluralNominative</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field2</key>
+                <value>&#x418;&#x43c;&#x435;&#x43d;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type7</key>
                 <value>string</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Type12</key>
+                <key>Type9</key>
                 <value>string</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Field12</key>
-                <value>&#x41c;.&#x427;. &#x422;&#x432;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Key12</key>
-                <value>pluralInstrumental</value>
+                <key>Type11</key>
+                <value>string</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Field10</key>
-                <value>&#x41c;.&#x427;. &#x414;&#x430;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</value>
+                <key>Type6</key>
+                <value>string</value>
             </textArea>
-        
-    
         
     
         
@@ -419,6 +417,242 @@
         
             
                 <field>&#x41c;.&#x427;. &#x422;&#x432;&#x43e;&#x440;&#x438;&#x442;&#x435;&#x43b;&#x44c;&#x43d;&#x44b;&#x439;</field>
+            
+        
+    
+    
+    
+    
+</block>
+
+        
+            
+
+<block>
+    <id>WJcywxpt4n8p</id>
+    <class>ERDEntityBlock4</class>
+    
+    
+        
+    
+    
+        
+    
+    <textAreas>
+        
+    
+        
+            <textArea>
+                <key>Key3</key>
+                <value>type</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key5</key>
+                <value></value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key4</key>
+                <value>result</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Name</key>
+                <value>Map</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key2</key>
+                <value>value</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type6</key>
+                <value>Type</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type5</key>
+                <value></value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type3</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type2</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type4</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field1</key>
+                <value>#</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type1</key>
+                <value>pk</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field3</key>
+                <value>&#x422;&#x438;&#x43f; &#x441;&#x432;&#x44f;&#x437;&#x438;</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field4</key>
+                <value>&#x420;&#x435;&#x437;&#x443;&#x43b;&#x44c;&#x442;&#x430;&#x442;</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field2</key>
+                <value>&#x417;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key6</key>
+                <value>Key</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field6</key>
+                <value>Field</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field5</key>
+                <value></value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key1</key>
+                <value>id</value>
+            </textArea>
+        
+    
+        
+    
+        
+    </textAreas>
+    
+        
+    
+    
+        
+            
+        
+            
+                <field>#</field>
+            
+        
+            
+                <field>&#x417;&#x43d;&#x430;&#x447;&#x435;&#x43d;&#x438;&#x435;</field>
+            
+        
+            
+                <field>&#x422;&#x438;&#x43f; &#x441;&#x432;&#x44f;&#x437;&#x438;</field>
             
         
     
