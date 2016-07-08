@@ -3,6 +3,7 @@
 namespace PrivateIT\modules\morphology\components;
 
 use PrivateIT\modules\morphology\models\Dic;
+use PrivateIT\modules\morphology\models\Map;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
 use yii\log\Logger;
@@ -58,6 +59,12 @@ class StringHelper extends Component
      */
     public static $charset = 'UTF-8';
 
+    /**
+     * @param $word
+     * @param $type
+     * @return mixed
+     * @throws StringHelperException
+     */
     public function morphology($word, $type)
     {
         $word = $this->ucfirst($word);
@@ -68,7 +75,23 @@ class StringHelper extends Component
                 return $result;
             }
         }
-        throw new StringHelperException(__CLASS__ . ': Word "' . $word . '" not found in ' . Dic::tableName() . ' for type "' . $type . '"', Logger::LEVEL_ERROR);
+        throw new StringHelperException(__CLASS__ . ':morphology: Word "' . $word . '" not found in ' . Dic::tableName() . ' for type "' . $type . '"', Logger::LEVEL_ERROR);
+    }
+
+    /**
+     * @param $word
+     * @param $type
+     * @return mixed
+     * @throws StringHelperException
+     */
+    public function map($word, $type)
+    {
+        $word = $this->ucfirst($word);
+        $result = Map::find()->andWhere(['value' => $word, 'type' => $type])->select('result')->scalar();
+        if ($result) {
+            return $result;
+        }
+        throw new StringHelperException(__CLASS__ . ':map: Word "' . $word . '" not found in ' . Map::tableName() . ' for type "' . $type . '"', Logger::LEVEL_ERROR);
     }
 
     /**
