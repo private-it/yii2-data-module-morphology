@@ -21,21 +21,43 @@ class MainTest extends DbTestCase
     {
         $module = MorphologyModule::getInstance();
         $data = [
-            'speciality' => 'Аллергология',
-            'cityGroup' => [
-                'name' => 'новосибирск'
+            'speciality' => [
+                'name' => 'Аллергология'
+            ],
+            'district' => [
+                'name' => 'Советский'
+            ],
+            'app' => [
+                'data' => [
+                    'cityGroup' => [
+                        'name' => 'новосибирск'
+                    ]
+                ]
             ]
         ];
 
+        $pattern = 'Лучшие ' .
+            '{speciality.name|map:доктор|morphology:plural_nominative|strtolower}' .
+            ' ' .
+            '{app.data.cityGroup.name|morphology:genitive|ucfirst}';
         $this->assertEquals(
             'Лучшие аллергологи Новосибирска',
-            $module->transform(
-                'Лучшие ' .
-                '{speciality|map:доктор|morphology:' . StringHelper::MORPHOLOGY_PLURAL_NOMINATIVE . '|strtolower}' .
-                ' ' .
-                '{cityGroup.name|morphology:' . StringHelper::MORPHOLOGY_GENITIVE . '|ucfirst}',
-                $data
-            )
+            $module->transform($pattern, $data)
+        );
+
+        $pattern = '{speciality.name|map:доктор|morphology:plural_nominative}' .
+            ' {district.name|morphology:genitive}' .
+            ' {district.name|map:геоТип:0|ifEmpty:Район: |morphology:genitive:0|strtolower}' .
+            ' {district.name|map:геоТип:0|ifEmpty:@app.data.cityGroup.name: |morphology:genitive:0}';
+        print_r($pattern);
+        $this->assertEquals(
+            'Аллергологи Советского района Новосибирска',
+            $module->transform($pattern, $data)
+        );
+        $data['district']['name'] = 'Бердск';
+        $this->assertEquals(
+            'Аллергологи Бердска',
+            $module->transform($pattern, $data)
         );
 
     }
