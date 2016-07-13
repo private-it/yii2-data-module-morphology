@@ -105,11 +105,14 @@ class MorphologyModule extends Module
 
     public function transform($str, $data)
     {
-
         if (preg_match_all('~\{([^\}]+)\}~', $str, $matches)) {
+            $this->stringHelper->source = $str;
+            $this->stringHelper->data = $data;
+
             for ($i = 0; $i < sizeof($matches[0]); $i++) {
                 $replacement = $matches[0][$i];
                 $expressions = $matches[1][$i];
+                $this->stringHelper->pattern = $expressions;
 
                 $expressions = explode('|', $expressions);
                 $value = array_shift($expressions);
@@ -125,12 +128,10 @@ class MorphologyModule extends Module
                     }
                     $value = call_user_func_array($funcName, $arguments);
                 }
-                if (!strlen($value)) {
-                    throw new StringHelperException('Result of expression "' . $replacement . '" is empty! String: "' . $str . '"');
-                }
 
                 $str = strtr($str, [$replacement => $value]);
             }
+            $str = trim(preg_replace('~\s+~', ' ', $str));
         }
         return $str;
     }

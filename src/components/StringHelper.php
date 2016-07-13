@@ -24,6 +24,19 @@ class StringHelper extends Component
     const MORPHOLOGY_PLURAL_PREPOSITIONAL = 'plural_prepositional';
 
     /**
+     * @var string
+     */
+    public $source;
+    /**
+     * @var string
+     */
+    public $pattern;
+    /**
+     * @var array
+     */
+    public $data = [];
+
+    /**
      * Таблица транслитерации ГОСТ 7.79-2000
      *
      * @var array
@@ -65,7 +78,7 @@ class StringHelper extends Component
      * @return mixed
      * @throws StringHelperException
      */
-    public function morphology($word, $type)
+    public function morphology($word, $type, $exception = true)
     {
         $word = $this->ucfirst($word);
         $words = Dic::find()->andWhere([static::MORPHOLOGY_NOMINATIVE => $word])->asArray()->one();
@@ -75,23 +88,28 @@ class StringHelper extends Component
                 return $result;
             }
         }
-        throw new StringHelperException(__CLASS__ . ':morphology: Word "' . $word . '" not found in ' . Dic::tableName() . ' for type "' . $type . '"', Logger::LEVEL_ERROR);
+        if ($exception) {
+            throw new StringHelperException(__CLASS__ . ':morphology: Word "' . $word . '" not found in ' . Dic::tableName() . ' for type "' . $type . '". Pattern: "' . $this->pattern . '"', Logger::LEVEL_ERROR);
+        }
     }
 
     /**
      * @param $word
      * @param $type
+     * @param boolean $exception
      * @return mixed
      * @throws StringHelperException
      */
-    public function map($word, $type)
+    public function map($word, $type, $exception = true)
     {
         $word = $this->ucfirst($word);
         $result = Map::find()->andWhere(['value' => $word, 'type' => $type])->select('result')->scalar();
         if ($result) {
             return $result;
         }
-        throw new StringHelperException(__CLASS__ . ':map: Word "' . $word . '" not found in ' . Map::tableName() . ' for type "' . $type . '"', Logger::LEVEL_ERROR);
+        if ($exception) {
+            throw new StringHelperException(__CLASS__ . ':map: Word "' . $word . '" not found in ' . Map::tableName() . ' for type "' . $type . '"', Logger::LEVEL_ERROR);
+        }
     }
 
     /**
@@ -143,6 +161,33 @@ class StringHelper extends Component
     public function strtoupper($str)
     {
         return mb_strtoupper($str, static::$charset);
+    }
+
+    /**
+     * @param string $str
+     * @param string $valueYes
+     * @param string $valueNo
+     * @return string
+     */
+    public function ifEmpty($str, $valueYes, $valueNo)
+    {
+        $value = empty($str) ? $valueYes : $valueNo;
+        if (substr($value, 0, 1) == '@') {
+            $value = ArrayHelper::getValue($this->data, substr($value, 1));
+        }
+        return $value;
+    }
+
+    /**
+     * @param $str
+     * @throws StringHelperException
+     */
+    public function notEmpty($str)
+    {
+        if (!strlen($str)) {
+            throw new StringHelperException('Result of expression "' . $this->pattern . '" is empty! String: "' . $this->source . '"');
+        }
+        return $str;
     }
 
     /**
