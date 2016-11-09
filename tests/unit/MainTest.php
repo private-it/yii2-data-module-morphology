@@ -59,6 +59,18 @@ class MainTest extends DbTestCase
             'Аллергологи Бердска',
             $module->transform($pattern, $data)
         );
+        $this->assertEquals(
+            'Feb 15, 2015',
+            $module->transform('{date|asDate}', ['date' => '15.02.2015 15:23:17'])
+        );
+        $this->assertEquals(
+            'Feb 15, 2015, 3:23:17 PM',
+            $module->transform('{date|asDateTime}', ['date' => '15.02.2015 15:23:17'])
+        );
+        $this->assertEquals(
+            '¤180,005.00',
+            $module->transform('{money|asCurrency}', ['money' => '180005'])
+        );
 
     }
 }

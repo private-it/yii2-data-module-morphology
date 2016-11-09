@@ -2,7 +2,7 @@
 return array_replace_recursive(
     require __DIR__ . '/main.php',
     [
-        'language' => 'ru',
+        'language' => 'en',
         'bootstrap' => ['log'],
         'components' => [
             'log' => [

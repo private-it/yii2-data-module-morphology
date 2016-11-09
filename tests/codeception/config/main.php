@@ -4,6 +4,7 @@ return array_replace_recursive(
         'id' => 'test',
         'basePath' => realpath(__DIR__ . '/../../../'),
         'runtimePath' => realpath(__DIR__ . '/../../_output'),
+        'language' => 'en',
         'components' => [
             'db' => require __DIR__ . '/db.php',
         ],

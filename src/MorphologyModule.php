@@ -17,6 +17,8 @@ use yii\helpers\VarDumper;
  * Class MorphologyModule
  *
  * @package PrivateIT\modules\morphology
+ *
+ * @property \PrivateIT\modules\morphology\components\StringHelper $stringHelper
  */
 class MorphologyModule extends Module
 {
@@ -66,7 +68,7 @@ class MorphologyModule extends Module
     }
 
     /**
-     * @return static
+     * @return null|Module|MorphologyModule
      */
     public static function getInstance()
     {
@@ -103,6 +105,11 @@ class MorphologyModule extends Module
         return '{{%' . $module->tablePrefix . $tableName . '}}';
     }
 
+    /**
+     * @param string $str
+     * @param array $data
+     * @return string
+     */
     public function transform($str, $data)
     {
         if (preg_match_all('~\{([^\}]+)\}~', $str, $matches)) {
@@ -123,8 +130,13 @@ class MorphologyModule extends Module
                     $funcName = $arguments[0];
                     $arguments[0] = $value;
 
-                    if (method_exists($this->stringHelper, $funcName)) {
-                        $funcName = [$this->stringHelper, $funcName];
+                    if (is_string($funcName)) {
+                        if (method_exists($this->stringHelper, $funcName)) {
+                            $funcName = [$this->stringHelper, $funcName];
+                        }
+                        elseif (Yii::$app->has('formatter') && method_exists(Yii::$app->formatter, $funcName)) {
+                            $funcName = [Yii::$app->formatter, $funcName];
+                        }
                     }
                     $value = call_user_func_array($funcName, $arguments);
                 }
