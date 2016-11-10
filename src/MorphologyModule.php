@@ -112,7 +112,7 @@ class MorphologyModule extends Module
      */
     public function transform($str, $data)
     {
-        if (preg_match_all('~\{([^\}]+)\}~', $str, $matches)) {
+        if (preg_match_all('~\{([^\}]+)\}~m', $str, $matches)) {
             $this->stringHelper->source = $str;
             $this->stringHelper->data = $data;
 
@@ -126,7 +126,7 @@ class MorphologyModule extends Module
                 $value = ArrayHelper::getValue($data, $value);
 
                 foreach ($expressions as $expression) {
-                    $arguments = explode(':', $expression);
+                    $arguments = explode('::', $expression);
                     $funcName = $arguments[0];
                     $arguments[0] = $value;
 

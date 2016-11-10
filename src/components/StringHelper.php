@@ -172,8 +172,15 @@ class StringHelper extends Component
     public function ifEmpty($str, $valueYes, $valueNo)
     {
         $value = empty($str) ? $valueYes : $valueNo;
-        if (substr($value, 0, 1) == '@') {
-            $value = ArrayHelper::getValue($this->data, substr($value, 1));
+        if (preg_match_all('~\@(\S+)~', $value, $matches)) {
+            for ($i = 0; $i < sizeof($matches[0]); $i++) {
+                $value = strtr(
+                    $value,
+                    [
+                        $matches[0][$i] => ArrayHelper::getValue($this->data, $matches[1][$i])
+                    ]
+                );
+            }
         }
         return $value;
     }
