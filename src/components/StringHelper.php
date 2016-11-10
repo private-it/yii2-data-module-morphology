@@ -205,6 +205,18 @@ class StringHelper extends Component
     {
         return '<strong>' . $str . '</strong>';
     }
+
+    /**
+     * @param string $value
+     * @param string $path
+     * @param null $defaultValue
+     * @return mixed
+     */
+    public function arrayKey($value, $path, $defaultValue = null)
+    {
+        $items = ArrayHelper::getValue($this->data, $path, []);
+        return ArrayHelper::getValue($items, $value, $defaultValue);
+    }
 }
 
 class StringHelperException extends \Exception
