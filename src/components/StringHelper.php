@@ -217,6 +217,34 @@ class StringHelper extends Component
         $items = ArrayHelper::getValue($this->data, $path, []);
         return ArrayHelper::getValue($items, $value, $defaultValue);
     }
+
+    /**
+     * @param string $condition
+     * @param string $a
+     * @param string $b
+     * @param string $valueYes
+     * @param string $valueNo
+     * @return string
+     * @throws StringHelperException
+     */
+    public function ifCondition($a, $condition, $b, $valueYes, $valueNo = '')
+    {
+        switch ($condition) {
+            case '==':
+                return $a == $b ? $valueYes : $valueNo;
+            case '!=':
+                return $a != $b ? $valueYes : $valueNo;
+            case '>':
+                return $a > $b ? $valueYes : $valueNo;
+            case '>=':
+                return $a >= $b ? $valueYes : $valueNo;
+            case '<':
+                return $a < $b ? $valueYes : $valueNo;
+            case '<=':
+                return $a <= $b ? $valueYes : $valueNo;
+        }
+        throw new StringHelperException('Condition "' . $condition . '" not found! String: "' . $this->source . '"');
+    }
 }
 
 class StringHelperException extends \Exception
