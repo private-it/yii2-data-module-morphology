@@ -171,28 +171,22 @@ class StringHelper extends Component
      */
     public function ifEmpty($str, $valueYes, $valueNo)
     {
-        $value = empty($str) ? $valueYes : $valueNo;
-        if (preg_match_all('~\@(\S+)~', $value, $matches)) {
-            for ($i = 0; $i < sizeof($matches[0]); $i++) {
-                $value = strtr(
-                    $value,
-                    [
-                        $matches[0][$i] => ArrayHelper::getValue($this->data, $matches[1][$i])
-                    ]
-                );
-            }
-        }
-        return $value;
+        return empty($str) ? $valueYes : $valueNo;
     }
 
     /**
-     * @param $str
+     * @param string $str
+     * @param bool $exception
+     * @return string
      * @throws StringHelperException
      */
-    public function notEmpty($str)
+    public function notEmpty($str, $exception = true)
     {
         if (!strlen($str)) {
-            throw new StringHelperException('Result of expression "' . $this->pattern . '" is empty! String: "' . $this->source . '"');
+            if ($exception) {
+                throw new StringHelperException('String not be empty "' . $this->pattern . '"! String: "' . $this->source . '"');
+            }
+            return '';
         }
         return $str;
     }
