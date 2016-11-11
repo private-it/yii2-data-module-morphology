@@ -112,7 +112,8 @@ class MorphologyModule extends Module
      */
     public function transform($str, $data)
     {
-        if (preg_match_all('~\{([^\}]+)\}~m', $str, $matches)) {
+        $pattern = '~\{(([^\{\}]*|(?R))*)\}~m';
+        if (preg_match_all($pattern, $str, $matches)) {
             $this->stringHelper->source = $str;
             $this->stringHelper->data = $data;
 
@@ -121,11 +122,22 @@ class MorphologyModule extends Module
                 $expressions = $matches[1][$i];
                 $this->stringHelper->pattern = $expressions;
 
+                $inners = [];
+                if (preg_match_all($pattern, $expressions, $innersMatches)) {
+                    foreach ($innersMatches[0] as $innerMatchKey => $innerMatchVal) {
+                        $inners['#inner' . $innerMatchKey . '#'] = $innerMatchVal;
+                    }
+                }
+
+                // replace inners
+                $expressions = strtr($expressions, array_flip($inners));
+
                 $expressions = explode('|', $expressions);
                 $value = array_shift($expressions);
                 $value = ArrayHelper::getValue($data, $value);
 
                 foreach ($expressions as $expression) {
+
                     $arguments = explode('::', $expression);
                     $funcName = $arguments[0];
                     $arguments[0] = $value;
@@ -133,15 +145,17 @@ class MorphologyModule extends Module
                     if (is_string($funcName)) {
                         if (method_exists($this->stringHelper, $funcName)) {
                             $funcName = [$this->stringHelper, $funcName];
-                        }
-                        elseif (Yii::$app->has('formatter') && method_exists(Yii::$app->formatter, $funcName)) {
+                        } elseif (Yii::$app->has('formatter') && method_exists(Yii::$app->formatter, $funcName)) {
                             $funcName = [Yii::$app->formatter, $funcName];
                         }
                     }
                     $value = call_user_func_array($funcName, $arguments);
+
                 }
 
-                $str = strtr($str, [$replacement => $value]);
+                // return inners
+                $value = strtr($value, $inners);
+                $str = strtr($str, [$replacement => $this->transform($value, $data)]);
             }
             $str = trim(preg_replace('~\s+~', ' ', $str));
         }
